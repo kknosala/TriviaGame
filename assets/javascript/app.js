@@ -110,62 +110,91 @@ $( document ).ready(function() {
                     if(y === 1){
                         if(answerChoice == 'Coast Redwood'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Redwoods can reach 115 meters tall.');
                         }else{
+                            $('#win-text').html('The correct answer is: Coast Redwood');
+                            $('#fun-fact').html('Redwoods can reach 115 meters tall.');
                             print.inccorrectAnswer();
                         }
-                        gameQuestions.askQuestion(2);
                     }else if(y === 2){
                         if(answerChoice == 'Travis Bickle'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Every actor in \"Taxi Driver\" took a massive paycut to make the film.');
                         }else{
+                            $('#win-text').html('The correct answer is: Travis Bickle');
+                            $('#fun-fact').html('Every actor in \"Taxi Driver\" took a massive paycut to make the film.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 3){
                         if(answerChoice == 'American Civil War'){
                             print.correctAnswer();
+                            $('#fun-fact').html('620,000 soliders died, more than WW1, WW2, and Vietnam combined.');
                         }else{
+                            $('#win-text').html('The correct answer is: American Civil War');
+                            $('#fun-fact').html('620,000 soliders died, more than WW1, WW2, and Vietnam combined.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 4){
                         if(answerChoice == 'Stone Fish'){
                             print.correctAnswer();
+                            $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
                         }else{
+                            $('#win-text').html('The correct answer is: Stone Fish');
+                            $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 5){
                         if(answerChoice == 'USA'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Alice Stevvins Wells became a police office in 1910.');
                         }else{
+                            $('#win-text').html('The correct answer is: USA');
+                            $('#fun-fact').html('Alice Stevvins Wells became a police office in 1910.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 6){
                         if(answerChoice == 'White'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Dalmations develop their spots at 4 weeks old.');
                         }else{
+                            $('#win-text').html('The correct answer is: White');
+                            $('#fun-fact').html('Dalmations develop their spots at 4 weeks old.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 7){
                         if(answerChoice == 'Prime Numbers'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Prime numbers can only be divided by themselves and 1.');
                         }else{
+                            $('#win-text').html('The correct answer is: Prime Numbers');
+                            $('#fun-fact').html('Prime numbers can only be divided by themselves and 1.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 8){
                         if(answerChoice == 'Spanish'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Venezuela is home to the world\'s largest rodent, the Capybara.');
                         }else{
+                            $('#win-text').html('The correct answer is: Spanish');
+                            $('#fun-fact').html('Venezuela is home to the world\'s largest rodent, the Capybara.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 9){
                         if(answerChoice == 'Abu'){
                             print.correctAnswer();
+                            $('#fun-fact').html('Robin Williams recorded over 16 hours of audio for the movie.');
                         }else{
+                            $('#win-text').html('The correct answer is: Abu');
+                            $('#fun-fact').html('Robin Williams recorded over 16 hours of audio for the movie.');
                             print.inccorrectAnswer();
                         }
                     }else if(y === 10){
                         if(answerChoice == 'Romania'){
                             print.correctAnswer();
+                            $('#fun-fact').html('The Romanian language is over 1,700 years old.');
                         }else{
+                            $('#win-text').html('The correct answer is: Romania');
+                            $('#fun-fact').html('The Romanian language is over 1,700 years old.');
                             print.inccorrectAnswer();
                         }
                     }
@@ -202,7 +231,6 @@ $( document ).ready(function() {
         },
         
         inccorrectAnswer: function(){
-            $('#win-text').html('You were wrong!');
             gameVariables.incorrectGuesses++
         }
     }
