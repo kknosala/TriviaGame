@@ -8,6 +8,7 @@ $( document ).ready(function() {
         incorrectGuesses: 0,
         timer: 10,
         clockRunning: false,
+        answerQuestion: true,
 
     }
 
@@ -72,15 +73,53 @@ $( document ).ready(function() {
     }
 
     var print = {
-        
+
+        gameStats: function(){
+            $('#correct').html(gameVariables.correctGuesses);
+            $('#incorrect').html(gameVariables.incorrectGuesses);
+        },
+
+        timer: function(){
+            $('#timer').html(gameVariables.timer);
+        },
+
+        question: function(question, answers){
+            $('#question').html(question);
+            for(i = 0; i < 4; i++){
+                $('#answers').append('<button class=\"answer-button\" value=\"' + answers[i] + '\">' + answers[i] + '</button><br>');
+            }
+        }
     }
    
-    $('#start').on('click', function() {
-        gameTimer.start();
+    print.gameStats();
+    print.timer();
+    print.question(gameQuestions.question1, gameQuestions.answers1);
+    
+    $('.answer-button').click(function(event){
+
+        var answerChoice = this.value;
+        console.log(answerChoice);
+
+        if(gameVariables.answerQuestion){
+
+            gameVariables.answerQuestion = false;
+
+            if(answerChoice == 'Coast Redwood'){
+                $('#win-text').html('You are correct!');
+                gameVariables.correctGuesses++
+            }else{
+                $('#win-text').html('You were wrong!');
+                gameVariables.incorrectGuesses++
+            }
+
+        }
+
+        print.gameStats();
     })
-    $('#stop').on('click', function(){
-        gameTimer.stop();
-    })
+
+    
+
+    
     
 
 
