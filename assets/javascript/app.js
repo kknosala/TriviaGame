@@ -9,6 +9,7 @@ $( document ).ready(function() {
         timer: 10,
         clockRunning: false,
         answerQuestion: true,
+        nextQuestion: 0,
 
     }
 
@@ -33,7 +34,6 @@ $( document ).ready(function() {
 
         count: function() {
             gameVariables.timer--;
-            // $('#timer').html(gameVariables.timer);
             print.timer();
         }
     }
@@ -99,8 +99,20 @@ $( document ).ready(function() {
         },
 
         answerQuestion: function(y){
-
-            $('.answer-button').click(function(){
+            
+            if(gameVariables.timer === 0){
+                gameVariables.answerQuestion = false;
+                if(y === 1){
+                    $('#win-text').html('The correct answer is: Coast Redwood');
+                    $('#fun-fact').html('Redwoods can reach 115 meters tall.');
+                    print.inccorrectAnswer();
+                }
+                setTimeout(function(){
+                    print.playGame();
+                    gameQuestions.askQuestion(y + 1);
+                }, 5000)
+            }
+                $('.answer-button').click(function(){
 
                 var answerChoice = this.value;
             
@@ -199,6 +211,10 @@ $( document ).ready(function() {
                             print.inccorrectAnswer();
                         }
                     }
+                    setTimeout(function(){
+                        print.playGame();
+                        gameQuestions.askQuestion(y + 1);
+                    }, 5000)
                 }
                 gameTimer.stop();
                 print.gameStats();
@@ -236,17 +252,26 @@ $( document ).ready(function() {
         },
 
         clear: function(){
-
+            $('#question').empty();
             $('#answers').empty();
+            $('#win-text').empty();
+            $('#fun-fact').empty();
+        },
+
+        playGame: function(z){
+            print.clear();
+            gameVariables.timer = 10
+            gameQuestions.askQuestion(z);
+            print.timer();
+            gameTimer.start();
         }
     }
    
     print.gameStats();
-    print.timer();
-    gameQuestions.askQuestion(1);
-    gameTimer.start();
     
-
+    $('#start').click(function(){
+        print.playGame(1);
+    })
     
 
     
