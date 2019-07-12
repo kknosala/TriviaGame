@@ -33,8 +33,8 @@ $( document ).ready(function() {
 
         count: function() {
             gameVariables.timer--;
-            $('#timer').html(gameVariables.timer);
-            console.log(this.intervalId);
+            // $('#timer').html(gameVariables.timer);
+            print.timer();
         }
     }
     
@@ -70,6 +70,111 @@ $( document ).ready(function() {
         question10: 'Bram Stoker\'s Dracula lived in Transylvania. In what modern-day country can Transylvania be found in?',
         answers10: ['Russia', 'Serbia', 'Romania', 'Kazakhstan'],
         //Romania
+
+        askQuestion: function(x){
+
+            if(x === 1){
+                print.question(gameQuestions.question1, gameQuestions.answers1);
+            }else if(x === 2){
+                print.question(gameQuestions.question2, gameQuestions.answers2);
+            }else if(x === 3){
+                print.question(gameQuestions.question3, gameQuestions.answers3);
+            }else if(x === 4){
+                print.question(gameQuestions.question4, gameQuestions.answers4);
+            }else if(x === 5){
+                print.question(gameQuestions.question5, gameQuestions.answers5);
+            }else if(x === 6){
+                print.question(gameQuestions.question6, gameQuestions.answers6);
+            }else if(x === 7){
+                print.question(gameQuestions.question7, gameQuestions.answers7);
+            }else if(x === 8){
+                print.question(gameQuestions.question8, gameQuestions.answers8);
+            }else if(x === 9){
+                print.question(gameQuestions.question9, gameQuestions.answers9);
+            }else if(x === 10){
+                print.question(gameQuestions.question10, gameQuestions.answers10);
+            }
+            this.answerQuestion(x);
+        },
+
+        answerQuestion: function(y){
+
+            $('.answer-button').click(function(){
+
+                var answerChoice = this.value;
+            
+                if(gameVariables.answerQuestion){
+            
+                    gameVariables.answerQuestion = false;
+                    
+                    if(y === 1){
+                        if(answerChoice == 'Coast Redwood'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                        gameQuestions.askQuestion(2);
+                    }else if(y === 2){
+                        if(answerChoice == 'Travis Bickle'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 3){
+                        if(answerChoice == 'American Civil War'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 4){
+                        if(answerChoice == 'Stone Fish'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 5){
+                        if(answerChoice == 'USA'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 6){
+                        if(answerChoice == 'White'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 7){
+                        if(answerChoice == 'Prime Numbers'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 8){
+                        if(answerChoice == 'Spanish'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 9){
+                        if(answerChoice == 'Abu'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }else if(y === 10){
+                        if(answerChoice == 'Romania'){
+                            print.correctAnswer();
+                        }else{
+                            print.inccorrectAnswer();
+                        }
+                    }
+                }
+                gameTimer.stop();
+                print.gameStats();
+            })
+        }
+        
     }
 
     var print = {
@@ -80,42 +185,53 @@ $( document ).ready(function() {
         },
 
         timer: function(){
-            $('#timer').html(gameVariables.timer);
+            $('#timer').html('Time Left: ' + gameVariables.timer);
         },
 
         question: function(question, answers){
+            gameVariables.answerQuestion = true;
             $('#question').html(question);
             for(i = 0; i < 4; i++){
                 $('#answers').append('<button class=\"answer-button\" value=\"' + answers[i] + '\">' + answers[i] + '</button><br>');
             }
+        },
+
+        correctAnswer: function(){
+            $('#win-text').html('You are correct!');
+            gameVariables.correctGuesses++
+        },
+        
+        inccorrectAnswer: function(){
+            $('#win-text').html('You were wrong!');
+            gameVariables.incorrectGuesses++
         }
     }
    
     print.gameStats();
     print.timer();
-    print.question(gameQuestions.question1, gameQuestions.answers1);
+    gameQuestions.askQuestion(1);
+    gameTimer.start();
     
-    $('.answer-button').click(function(event){
+    // $('.answer-button').click(function(){
 
-        var answerChoice = this.value;
-        console.log(answerChoice);
+    //     var answerChoice = this.value;
 
-        if(gameVariables.answerQuestion){
+    //     if(gameVariables.answerQuestion){
 
-            gameVariables.answerQuestion = false;
+    //         gameVariables.answerQuestion = false;
 
-            if(answerChoice == 'Coast Redwood'){
-                $('#win-text').html('You are correct!');
-                gameVariables.correctGuesses++
-            }else{
-                $('#win-text').html('You were wrong!');
-                gameVariables.incorrectGuesses++
-            }
+    //         if(answerChoice == 'Coast Redwood'){
+    //             $('#win-text').html('You are correct!');
+    //             gameVariables.correctGuesses++
+    //         }else{
+    //             $('#win-text').html('You were wrong!');
+    //             gameVariables.incorrectGuesses++
+    //         }
+    //         gameTimer.stop();
+    //     }
 
-        }
-
-        print.gameStats();
-    })
+    //     print.gameStats();
+    // })
 
     
 
