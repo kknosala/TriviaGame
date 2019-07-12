@@ -94,6 +94,7 @@ $( document ).ready(function() {
             }else if(x === 10){
                 print.question(gameQuestions.question10, gameQuestions.answers10);
             }
+            gameTimer.start();
             this.answerQuestion(x);
         },
 
@@ -232,6 +233,11 @@ $( document ).ready(function() {
         
         inccorrectAnswer: function(){
             gameVariables.incorrectGuesses++
+        },
+
+        clear: function(){
+
+            $('#answers').empty();
         }
     }
    
@@ -240,26 +246,6 @@ $( document ).ready(function() {
     gameQuestions.askQuestion(1);
     gameTimer.start();
     
-    // $('.answer-button').click(function(){
-
-    //     var answerChoice = this.value;
-
-    //     if(gameVariables.answerQuestion){
-
-    //         gameVariables.answerQuestion = false;
-
-    //         if(answerChoice == 'Coast Redwood'){
-    //             $('#win-text').html('You are correct!');
-    //             gameVariables.correctGuesses++
-    //         }else{
-    //             $('#win-text').html('You were wrong!');
-    //             gameVariables.incorrectGuesses++
-    //         }
-    //         gameTimer.stop();
-    //     }
-
-    //     print.gameStats();
-    // })
 
     
 
