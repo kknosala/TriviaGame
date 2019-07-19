@@ -272,7 +272,9 @@ $( document ).ready(function() {
         timeOut: function(y){
 
             if(gameVariables.timer === 0){
-                console.log('zeroed out');
+
+                gameVariables.answerQuestion = false;
+
                 if(y === 1){
                     $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Coast Redwood</p>');
                     $('#fun-fact').html('Redwoods can reach 115 meters tall.');
@@ -293,19 +295,36 @@ $( document ).ready(function() {
                     $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
                     $('#image').html('<img src=\"assets/images/question4.gif\" />');
                     print.inccorrectAnswer();
-
                 }else if(y === 5){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: USA</p>');
+                    $('#fun-fact').html('Alice Stevvins Wells became a police office in 1910.');
+                    $('#image').html('<img src=\"assets/images/question5.gif\" />');
+                    print.inccorrectAnswer();
                 }else if(y === 6){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: White</p>');
+                    $('#fun-fact').html('Dalmations develop their spots at 4 weeks old.');
+                    $('#image').html('<img src=\"assets/images/question6.gif\" />');
+                    print.inccorrectAnswer();
                 }else if(y === 7){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Prime Numbers</p>');
+                    $('#fun-fact').html('Prime numbers can only be divided by themselves and 1.');
+                    $('#image').html('<img src=\"assets/images/question7.gif\" />');
+                    print.inccorrectAnswer();
                 }else if(y === 8){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Spanish</p>');
+                    $('#fun-fact').html('Venezuela is home to the world\'s largest rodent, the Capybara.');
+                    $('#image').html('<img src=\"assets/images/question8.gif\" />');
+                    print.inccorrectAnswer();
                 }else if(y === 9){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Abu</p>');
+                    $('#fun-fact').html('Robin Williams recorded over 16 hours of audio for the movie.');
+                    $('#image').html('<img src=\"assets/images/question9.gif\" />');
+                    print.inccorrectAnswer();
                 }else if(y === 10){
-
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Romania</p>');
+                    $('#fun-fact').html('The Romanian language is over 1,700 years old.');
+                    $('#image').html('<img src=\"assets/images/question10.gif\" />');
+                    print.inccorrectAnswer();
                 }
                 setTimeout(function(){
                     if(y < 10){
@@ -317,7 +336,7 @@ $( document ).ready(function() {
                         print.finalScreen();
                     }
                 }, 5000)
-            }
+            }print.gameStats();
         }
         
     }
@@ -325,8 +344,8 @@ $( document ).ready(function() {
     var print = {
 
         gameStats: function(){
-            $('#correct').html(gameVariables.correctGuesses);
-            $('#incorrect').html(gameVariables.incorrectGuesses);
+            $('#correct').html('Correct Answers: ' + gameVariables.correctGuesses);
+            $('#incorrect').html('Incorrect Answers: ' + gameVariables.incorrectGuesses);
         },
 
         timer: function(){
@@ -365,11 +384,15 @@ $( document ).ready(function() {
             gameQuestions.askQuestion(z);
             print.timer();
             gameTimer.start(z);
-            console.log(gameVariables.questionNumber);
         },
 
         finalScreen: function(){
-            $('#question').html('Finished')
+            $('#correct').empty();
+            $('#incorrect').empty();
+            $('#question').html('Congradulations!');
+            $('#answers').html('Here are your final results:');
+            $('#win-text').html('How many questions you got right: ' + gameVariables.correctGuesses);
+            $('#fun-fact').html('How many questions you got wrong: ' + gameVariables.incorrectGuesses);
         }
     }
    
