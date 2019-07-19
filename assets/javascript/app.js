@@ -10,6 +10,7 @@ $( document ).ready(function() {
         clockRunning: false,
         answerQuestion: true,
         nextQuestion: 0,
+        questionNumber: 0,
 
     }
 
@@ -38,6 +39,7 @@ $( document ).ready(function() {
             print.timer();
             if(gameVariables.timer === 0){
                 gameTimer.stop();
+                gameQuestions.timeOut(gameVariables.questionNumber);
                 }
             }
     }
@@ -143,90 +145,110 @@ $( document ).ready(function() {
                             if(answerChoice == 'Coast Redwood'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Redwoods can reach 115 meters tall.');
+                                $('#image').html('<img src=\"assets/images/question1.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Coast Redwood');
                                 $('#fun-fact').html('Redwoods can reach 115 meters tall.');
+                                $('#image').html('<img src=\"assets/images/question1.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 2){
                             if(answerChoice == 'Travis Bickle'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Every actor in \"Taxi Driver\" took a massive paycut to make the film.');
+                                $('#image').html('<img src=\"assets/images/question2.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Travis Bickle');
                                 $('#fun-fact').html('Every actor in \"Taxi Driver\" took a massive paycut to make the film.');
+                                $('#image').html('<img src=\"assets/images/question2.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 3){
                             if(answerChoice == 'American Civil War'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('620,000 soliders died, more than WW1, WW2, and Vietnam combined.');
+                                $('#image').html('<img src=\"assets/images/question3.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: American Civil War');
                                 $('#fun-fact').html('620,000 soliders died, more than WW1, WW2, and Vietnam combined.');
+                                $('#image').html('<img src=\"assets/images/question3.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 4){
                             if(answerChoice == 'Stone Fish'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
+                                $('#image').html('<img src=\"assets/images/question4.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Stone Fish');
                                 $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
+                                $('#image').html('<img src=\"assets/images/question4.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 5){
                             if(answerChoice == 'USA'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Alice Stevvins Wells became a police office in 1910.');
+                                $('#image').html('<img src=\"assets/images/question5.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: USA');
                                 $('#fun-fact').html('Alice Stevvins Wells became a police office in 1910.');
+                                $('#image').html('<img src=\"assets/images/question5.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 6){
                             if(answerChoice == 'White'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Dalmations develop their spots at 4 weeks old.');
+                                $('#image').html('<img src=\"assets/images/question6.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: White');
                                 $('#fun-fact').html('Dalmations develop their spots at 4 weeks old.');
+                                $('#image').html('<img src=\"assets/images/question6.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 7){
                             if(answerChoice == 'Prime Numbers'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Prime numbers can only be divided by themselves and 1.');
+                                $('#image').html('<img src=\"assets/images/question7.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Prime Numbers');
                                 $('#fun-fact').html('Prime numbers can only be divided by themselves and 1.');
+                                $('#image').html('<img src=\"assets/images/question7.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 8){
                             if(answerChoice == 'Spanish'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Venezuela is home to the world\'s largest rodent, the Capybara.');
+                                $('#image').html('<img src=\"assets/images/question8.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Spanish');
                                 $('#fun-fact').html('Venezuela is home to the world\'s largest rodent, the Capybara.');
+                                $('#image').html('<img src=\"assets/images/question8.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 9){
                             if(answerChoice == 'Abu'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('Robin Williams recorded over 16 hours of audio for the movie.');
+                                $('#image').html('<img src=\"assets/images/question9.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Abu');
                                 $('#fun-fact').html('Robin Williams recorded over 16 hours of audio for the movie.');
+                                $('#image').html('<img src=\"assets/images/question9.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }else if(y === 10){
                             if(answerChoice == 'Romania'){
                                 print.correctAnswer();
                                 $('#fun-fact').html('The Romanian language is over 1,700 years old.');
+                                $('#image').html('<img src=\"assets/images/question10.gif\" />');
                             }else{
                                 $('#win-text').html('The correct answer is: Romania');
                                 $('#fun-fact').html('The Romanian language is over 1,700 years old.');
+                                $('#image').html('<img src=\"assets/images/question10.gif\" />');
                                 print.inccorrectAnswer();
                             }
                         }
@@ -254,11 +276,46 @@ $( document ).ready(function() {
                 if(y === 1){
                     $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Coast Redwood</p>');
                     $('#fun-fact').html('Redwoods can reach 115 meters tall.');
+                    $('#image').html('<img src=\"assets/images/question1.gif\" />');
                     print.inccorrectAnswer();
+                }else if(y === 2){
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Travis Bickle</p>');
+                    $('#fun-fact').html('Every actor in \"Taxi Driver\" took a massive paycut to make the film.');
+                    $('#image').html('<img src=\"assets/images/question2.gif\" />');
+                    print.inccorrectAnswer();
+                }else if(y === 3){
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: American Civil War</p>');
+                    $('#fun-fact').html('620,000 soliders died, more than WW1, WW2, and Vietnam combined.');
+                    $('#image').html('<img src=\"assets/images/question3.gif\" />');
+                    print.inccorrectAnswer();
+                }else if(y === 4){
+                    $('#win-text').html('<p>Out of Time!</p><p>The correct answer is: Stone Fish</p>');
+                    $('#fun-fact').html('The Stone Fish sting is described as the most intense pain known to man.');
+                    $('#image').html('<img src=\"assets/images/question4.gif\" />');
+                    print.inccorrectAnswer();
+
+                }else if(y === 5){
+
+                }else if(y === 6){
+
+                }else if(y === 7){
+
+                }else if(y === 8){
+
+                }else if(y === 9){
+
+                }else if(y === 10){
+
                 }
                 setTimeout(function(){
-                    print.playGame();
-                    gameQuestions.askQuestion(y + 1);
+                    if(y < 10){
+                        print.playGame();
+                        gameQuestions.askQuestion(y + 1);
+                    }else{
+                        print.clear();
+                        $('#timer').empty();
+                        print.finalScreen();
+                    }
                 }, 5000)
             }
         }
@@ -298,14 +355,17 @@ $( document ).ready(function() {
             $('#answers').empty();
             $('#win-text').empty();
             $('#fun-fact').empty();
+            $('#image').empty();
         },
 
         playGame: function(z){
             print.clear();
+            gameVariables.questionNumber++
             gameVariables.timer = 10
             gameQuestions.askQuestion(z);
             print.timer();
             gameTimer.start(z);
+            console.log(gameVariables.questionNumber);
         },
 
         finalScreen: function(){
