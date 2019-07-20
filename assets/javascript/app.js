@@ -61,7 +61,7 @@ $( document ).ready(function() {
         question5: 'Which country employed the first police woman?',
         answers5: ['England', 'USA', 'France', 'Australia'],
         //USA
-        questions6: 'When born, a Dalmatian puppy is always what?',
+        question6: 'When born, a Dalmatian puppy is always what?',
         answers6: ['Black', 'Black with white spots', 'White', 'White with black spots'],
         //White
         question7: '2, 3, 5, 7, and 11 are the first five what?',
